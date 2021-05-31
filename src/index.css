@@ -35,9 +35,16 @@ code {
   border-right: 52px solid transparent;
 }
 
-.hex-row {
-  clear: left;
+.hexagon{
+  float: left;
+  margin-left: 3px;
+  margin-bottom: -26px;
 }
-.hex-row.even {
-  margin-left: 53px;
+
+svg{
+  width: 75%;
+  padding: 0;
+  float: left;
+  text-align: left;
+  font-size: 0;
 }
