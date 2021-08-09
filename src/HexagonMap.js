@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Hexagon from './Hexagon.js';
+import HexagonType from './HexagonType.js';
 
 let hexType = {
     PLAIN: "PLAIN",
@@ -13,32 +14,23 @@ const hexTypeSize = 5;
 class HexagonMap extends React.Component{
 
     generateHexType(){
+        let plains = new HexagonType(hexType.PLAIN, null, "Green", 0.25);
+        let hill = new HexagonType(hexType.HILL, null, "Yellow", 0.25);
+        let forest = new HexagonType(hexType.FOREST, null, "Red", 0.25);
+        let desert = new HexagonType(hexType.DESERT, null, "Brown", 0.25);
+        let mountain = new HexagonType(hexType.MOUNTAIN, null, "Gray", 0.25);
+
+        let types = [plains, hill, forest, desert ,mountain];
+
         let numHexTypes = hexType.size;
-        let randomNumber = Math.floor(Math.random()*hexTypeSize);
-        return Object.keys(hexType)[randomNumber];
-    }
-
-    getHexColor(){
-        let thisHexType = this.generateHexType();
-        switch(thisHexType){
-        case hexType.PLAIN:
-            return "Green";
-        case hexType.HILL:
-            return "Yellow";
-        case hexType.FOREST:
-            return "Red";
-        case hexType.DESERT:
-            return "Brown";
-        case hexType.MOUNTAIN:
-            return "Gray";
-
-        }
+        let randomNumber = Math.floor(Math.random()*types.length);
+        return types[randomNumber];
     }
 
     makeRow(hexagonSize, columns, rowPosition){
         var hexagons = [];
         for(var i = 0; i < columns; i++){
-            var color = this.getHexColor();
+            var color = this.generateHexType().color;
             var isEvenRow = (rowPosition + 1) % 2 == 0 ? "Y" : "N";
             hexagons.push(<Hexagon color={color} size={hexagonSize} columns={columns} columnPosition={i} rowPosition={rowPosition} isEvenRow={isEvenRow}/>);
         }
