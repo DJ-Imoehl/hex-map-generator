@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Hexagon from './Hexagon.js';
 import HexagonType from './HexagonType.js';
+import MapGenerationUtil from './MapGenerationUtil.js';
 
 let hexType = {
     PLAIN: "PLAIN",
@@ -13,24 +14,11 @@ const hexTypeSize = 5;
 
 class HexagonMap extends React.Component{
 
-    generateHexType(){
-        let plains = new HexagonType(hexType.PLAIN, null, "Green", 0.25);
-        let hill = new HexagonType(hexType.HILL, null, "Yellow", 0.25);
-        let forest = new HexagonType(hexType.FOREST, null, "Red", 0.25);
-        let desert = new HexagonType(hexType.DESERT, null, "Brown", 0.25);
-        let mountain = new HexagonType(hexType.MOUNTAIN, null, "Gray", 0.25);
-
-        let types = [plains, hill, forest, desert ,mountain];
-
-        let numHexTypes = hexType.size;
-        let randomNumber = Math.floor(Math.random()*types.length);
-        return types[randomNumber];
-    }
-
-    makeRow(hexagonSize, columns, rowPosition){
+    makeRow(hexagonSize, hexTypes, columns, rowPosition){
         var hexagons = [];
         for(var i = 0; i < columns; i++){
-            var color = this.generateHexType().color;
+            var hexType = hexTypes[rowPosition][i];
+            var color = hexType.color;
             var isEvenRow = (rowPosition + 1) % 2 == 0 ? "Y" : "N";
             hexagons.push(<Hexagon color={color} size={hexagonSize} columns={columns} columnPosition={i} rowPosition={rowPosition} isEvenRow={isEvenRow}/>);
         }
@@ -43,11 +31,21 @@ class HexagonMap extends React.Component{
         const rows = 5;
         const hexagonSize = 2;
 
+        let plains = new HexagonType(hexType.PLAIN, null, "Green", 0.1);
+        let hill = new HexagonType(hexType.HILL, null, "Yellow", 0.1);
+        let forest = new HexagonType(hexType.FOREST, null, "Red", 0.1);
+        let desert = new HexagonType(hexType.DESERT, null, "Brown", 0.1);
+        let mountain = new HexagonType(hexType.MOUNTAIN, null, "Gray", 0.1);
+
+        let types = [plains, hill, forest, desert ,mountain];
+
         var items = [];
+
+        var hexagonTypes = MapGenerationUtil.generateMap(types, columns, rows);
 
         for(var i = 0; i < rows; i++){
             var isEvenRow = (i + 1) % 2 == 0 ? "Y" : "N";
-            let hexagons = this.makeRow(hexagonSize, columns, i);
+            let hexagons = this.makeRow(hexagonSize, hexagonTypes, columns, i);
             items.push(hexagons);
         }
 
