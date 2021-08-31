@@ -31,11 +31,11 @@ class HexagonMap extends React.Component{
         const rows = 5;
         const hexagonSize = 2;
 
-        let plains = new HexagonType(hexType.PLAIN, null, "Green", 0.1);
-        let hill = new HexagonType(hexType.HILL, null, "Yellow", 0.1);
-        let forest = new HexagonType(hexType.FOREST, null, "Red", 0.1);
-        let desert = new HexagonType(hexType.DESERT, null, "Brown", 0.1);
-        let mountain = new HexagonType(hexType.MOUNTAIN, null, "Gray", 0.1);
+        let plains = new HexagonType(hexType.PLAIN, null, "Green", 0.1, 2, 2.5, 0);
+        let hill = new HexagonType(hexType.HILL, null, "Yellow", 0.1, 3, 3, 0);
+        let forest = new HexagonType(hexType.FOREST, null, "Red", 0.1, 2.5, 3.5, 0);
+        let desert = new HexagonType(hexType.DESERT, null, "Brown", 0.1, 2, 1, 0);
+        let mountain = new HexagonType(hexType.MOUNTAIN, null, "Gray", 0.1, 4, 2, 0);
 
         let types = [plains, hill, forest, desert ,mountain];
 
