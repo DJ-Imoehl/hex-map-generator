@@ -10,7 +10,7 @@ let hexType = {
     DESERT: "DESERT",
     MOUNTAIN: "MOUNTAIN"
 };
-const hexTypeSize = 5;
+const hexTypeSize = 10;
 
 class HexagonMap extends React.Component{
 
@@ -27,15 +27,15 @@ class HexagonMap extends React.Component{
     }
 
     render(){
-        const columns = 5;
-        const rows = 5;
+        const columns = 10;
+        const rows = 10;
         const hexagonSize = 2;
 
         let plains = new HexagonType(hexType.PLAIN, null, "Green", 0.1, 2, 2.5, 0);
         let hill = new HexagonType(hexType.HILL, null, "Yellow", 0.1, 3, 3, 0);
-        let forest = new HexagonType(hexType.FOREST, null, "Red", 0.1, 2.5, 3.5, 0);
-        let desert = new HexagonType(hexType.DESERT, null, "Brown", 0.1, 2, 1, 0);
-        let mountain = new HexagonType(hexType.MOUNTAIN, null, "Gray", 0.1, 4, 2, 0);
+        let forest = new HexagonType(hexType.FOREST, null, "#034B03", 0.1, 2.5, 3.5, 0);
+        let desert = new HexagonType(hexType.DESERT, null, "#C2B280", 0.1, 2, 0.5, 0);
+        let mountain = new HexagonType(hexType.MOUNTAIN, null, "Gray", 0.1, 3.5, 2, 0);
 
         let types = [plains, hill, forest, desert ,mountain];
 
