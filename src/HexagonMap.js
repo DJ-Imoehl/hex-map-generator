@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Hexagon from './Hexagon.js';
+import HexagonComponent from './HexagonComponent.js';
 import HexagonType from './objects/HexagonType.js';
 import MapGenerationUtil from './services/MapGenerationUtil.js';
 
@@ -20,7 +20,7 @@ class HexagonMap extends React.Component{
             var hexType = hexTypes[rowPosition][i];
             var color = hexType.color;
             var isEvenRow = (rowPosition + 1) % 2 == 0 ? "Y" : "N";
-            hexagons.push(<Hexagon color={color} size={hexagonSize} columns={columns} columnPosition={i} rowPosition={rowPosition} isEvenRow={isEvenRow}/>);
+            hexagons.push(<HexagonComponent color={color} size={hexagonSize} columns={columns} columnPosition={i} rowPosition={rowPosition} isEvenRow={isEvenRow}/>);
         }
 
         return hexagons;
