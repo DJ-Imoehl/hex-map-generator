@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Hexagon from './Hexagon.js';
 import HexagonType from './HexagonType.js';
-import MapGenerationUtil from './MapGenerationUtil.js';
+import MapGenerationUtil from './services/MapGenerationUtil.js';
 
 let hexType = {
     PLAIN: "PLAIN",
@@ -27,9 +27,9 @@ class HexagonMap extends React.Component{
     }
 
     render(){
-        const columns = 10;
-        const rows = 10;
-        const hexagonSize = 2;
+        const columns = 20;
+        const rows = 20;
+        const hexagonSize = 4;
 
         let plains = new HexagonType(hexType.PLAIN, null, "Green", 0.1, 2, 2.5, 0);
         let hill = new HexagonType(hexType.HILL, null, "Yellow", 0.1, 3, 3, 0);
