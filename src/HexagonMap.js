@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Hexagon from './Hexagon.js';
-import HexagonType from './HexagonType.js';
+import HexagonType from './objects/HexagonType.js';
 import MapGenerationUtil from './services/MapGenerationUtil.js';
 
 let hexType = {
